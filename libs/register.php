@@ -26,14 +26,8 @@
 		private function load_registry() {
 			//Add all URL entry here
 			$this->_registry = array(
-				'ref' => RefHandler::class,
-				'page' => Pages::class,
-				'dash' => Dashboard::class,
-				'support' => Admin::class,
-				'user' => People::class,
+				'categories' => CategoryController::class,
 				'root' => Main::class,
-				'supa' => Support::class,
-				'api' => Api::class
 			);
 		}
 

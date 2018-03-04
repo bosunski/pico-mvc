@@ -48,7 +48,8 @@
         {
             $this->_root = $this->split_url()[0];
             $registry = $this->_registry->get_registry($this->_root);
-            if ($registry != null) {
+
+            if ($registry) {
                 $this->curr_controller = new $registry;
                 $this->curr_controller->index($this->get_other_uri());
             } else {

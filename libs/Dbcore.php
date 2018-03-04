@@ -1,31 +1,34 @@
 <?PHP
+	namespace Pico;
+	use \PDO as PDO;
+
 	class Dbcore {
-		/* 
+		/*
 			The database Handle variable
 		 */
 		public $dbh;
 
-		/* 
+		/*
 			An instance variable of this class{encapsulation}
 		 */
 		private static $instance;
 
-		/* 
+		/*
 			The last error of the Database process
 		 */
 		public $error;
 
-		/* 
+		/*
 			The rows returned by the last select query
 		 */
 		public $rowsReturned;
 
-		/* 
+		/*
 			The columns returned by the last select query
 		 */
 		public $columnsReturned;
 
-		/* 
+		/*
 			The status of the last Action True/False
 		 */
 		public $done;
@@ -123,7 +126,7 @@
 			$this->rowsAffected = $q->rowCount();
 			$this->error = $q->errorInfo()[2];
 			$this->disconnect();
-			if($this->rowsAffected > 0) {
+			if($q) {
 				// This place is suspicious
 				return true;
 			}
@@ -180,6 +183,6 @@
 			return $this->rowsReturned;
 		}
 
-		
+
 	}
 ?>
