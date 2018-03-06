@@ -8,19 +8,33 @@
 
         protected $nl = "\n";
 
+        protected $configFile = 'mvc.conf.php';
+
         public function __construct()
         {
             $this->setArgs();
-            $this->loadCommands();
+            $this->checkEnviroments();
         }
 
         public function run()
         {
+            //exit();
+            $this->loadCommands();
             $base = explode(':', $this->argv[1])[0];
 
             if (array_key_exists(explode(':', $this->argv[1])[0], $this->commands)) {
-                $obj = $this->commands[$base];
+                $obj = new $this->commands[$base];
                 return $obj->runCommand($this->argv);
+            }
+        }
+
+        private function checkEnviroments()
+        {
+            if(!file_exists($this->configFile)) {
+                if( $this->argv[1] == 'install') return;
+                echo "Cannot find configuration file.\n";
+                echo "Please Run php pico intsall to create the config file.\n";
+                exit();
             }
         }
 
@@ -50,7 +64,8 @@
              */
             $this->commands = [
                 'install'     =>    $this->make(CLISetup::class),
-                'category'    =>    $this->make(CategoryConsole::class)
+                'category'    =>    $this->make(CategoryConsole::class),
+                'article'    =>    $this->make(ArticleConsole::class)
             ];
         }
 
@@ -58,6 +73,6 @@
         private function make($class)
         {
             // We can change Logic to load dependencies better than this
-            return new $class;
+            return $class;
         }
     }

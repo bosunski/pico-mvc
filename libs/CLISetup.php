@@ -18,7 +18,6 @@
             echo "Lets Get you started on the fly.\n";
 
 
-
             $dbsettings['host'] = readline("MySql Host > ");
             $dbsettings['user'] = readline("MySql User > ");
             $dbsettings['password'] = readline("MySql User Password > ");
@@ -41,6 +40,11 @@
             $sample = str_replace('@host', $this->dbsettings->host, $sample);
 
             if (file_put_contents($this->configFile, $sample)) {
+                if(file_exists($this->configFile)) {
+                    require($this->configFile);
+
+                }
+            
                 $this->createTables();
             }
 

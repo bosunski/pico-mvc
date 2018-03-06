@@ -1,7 +1,10 @@
 #!/usr/bin/env php
 <?php
+    ini_set('error_reporting', E_ALL & ~E_NOTICE & ~E_STRICT);
+
     require('vendor/autoload.php');
     if(file_exists('mvc.conf.php')) require('mvc.conf.php');
+
     $console = new Pico\Console\Console();
     $status = $console->run();
     exit($status);

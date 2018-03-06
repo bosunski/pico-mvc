@@ -8,16 +8,15 @@
         public static function createTables()
         {
             $catSql = 'CREATE TABLE categories (
-                        id int NOT NULL PRIMARY KEY,
+                        id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
                         name varchar(255) NOT NULL
                     );';
             $articleSql = 'CREATE TABLE articles (
-                            id int NOT NULL PRIMARY KEY,
+                            id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
                             catid int NOT NULL,
                             title varchar(255) NOT NULL,
                             body text(5000) NOT NULL
                         );';
-            require('mvc.conf.php');
             $db = Dbcore::getInstance();
             $exec = $db->prepare($catSql.$articleSql, []);
             if($exec) return true;
