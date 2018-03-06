@@ -64,9 +64,6 @@
 		}
 
 		public static function getInstance() {
-			//echo DB;
-			//exit;
-
 			if(!isset(self::$instance)) {
 				$object = __CLASS__;
 				self::$instance = new $object;

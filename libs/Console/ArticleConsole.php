@@ -76,7 +76,7 @@
             $categoryfound = false;
             // We loop until a correct category is inputed
             while(!$categoryfound) {
-                $catid = readline("Choose Category > ");
+                $catid = readline("Choose Category ID > ");
 
                 if(!$this->category->getCategoryById($catid)) {
                     echo "Category does not exist.\n";
