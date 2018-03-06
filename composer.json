@@ -1,0 +1,19 @@
+{
+    "name": "bosunski/pico-mvc",
+    "description": "Small MVC Implementation  just for learning",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bosun Egberinde",
+            "email": "bosunski@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload" : {
+        "psr-4": {
+            "Pico\\" : "libs/"
+        }
+    }
+}

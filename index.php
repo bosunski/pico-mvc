@@ -1,9 +1,9 @@
 <?php
     include('mvc.conf.php');
 
-    include('inc/functions.php');
-
-    Session::start();
+    require('libs/functions.php');
 
     $app = new App;
+
+    Session::start();
     $app->run();
